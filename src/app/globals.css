@@ -1,0 +1,394 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ============================================================================
+   Dept Selection Guide — Design System
+   Dark-first "analytical academic" aesthetic: deep ink surfaces, aurora accent
+   gradients, glass panels, hairline grid texture.
+   ========================================================================= */
+
+@theme {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+
+  /* Accent ramp — indigo → violet → cyan */
+  --color-brand-50: #eef2ff;
+  --color-brand-100: #e0e7ff;
+  --color-brand-200: #c7d2fe;
+  --color-brand-300: #a5b4fc;
+  --color-brand-400: #818cf8;
+  --color-brand-500: #6366f1;
+  --color-brand-600: #4f46e5;
+  --color-brand-700: #4338ca;
+  --color-brand-800: #3730a3;
+  --color-brand-900: #312e81;
+
+  --color-violet-accent: #8b5cf6;
+  --color-cyan-accent: #22d3ee;
+  --color-mint-accent: #34d399;
+
+  /* Semantic surfaces (dark-first values live in :root) */
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+  --color-ok: var(--ok);
+  --color-warn: var(--warn);
+  --color-risk: var(--risk);
+
+  --radius-xl2: 1.25rem;
+  --radius-xl3: 1.75rem;
+
+  --animate-aurora: aurora 18s ease-in-out infinite;
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-shimmer: shimmer 2.2s linear infinite;
+  --animate-pulse-ring: pulse-ring 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-fade-in: fade-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+}
+
+@keyframes aurora {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.55;
+  }
+  33% {
+    transform: translate3d(4%, -3%, 0) scale(1.12);
+    opacity: 0.75;
+  }
+  66% {
+    transform: translate3d(-3%, 4%, 0) scale(1.05);
+    opacity: 0.6;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--color-brand-500) 45%, transparent);
+  }
+  70% {
+    box-shadow: 0 0 0 14px transparent;
+  }
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* --------------------------------------------------------------- tokens */
+:root {
+  --surface: #ffffff;
+  --surface-2: #f6f7fb;
+  --surface-3: #eceff7;
+  --line: #e2e6f0;
+  --ink: #0d1220;
+  --ink-soft: #475069;
+  --ink-faint: #8a92ab;
+  --ok: #0d9f6e;
+  --warn: #c2830a;
+  --risk: #dc2626;
+  --glass: 255 255 255;
+  --grid-line: rgba(13, 18, 32, 0.045);
+  --shadow-color: 220 40% 40%;
+  color-scheme: light;
+}
+
+.dark {
+  --surface: #070a14;
+  --surface-2: #0d1222;
+  --surface-3: #141a2e;
+  --line: #212a45;
+  --ink: #f0f3fb;
+  --ink-soft: #a3abc4;
+  --ink-faint: #6b7490;
+  --ok: #34d399;
+  --warn: #fbbf24;
+  --risk: #fb7185;
+  --glass: 13 18 34;
+  --grid-line: rgba(160, 180, 255, 0.06);
+  --shadow-color: 235 60% 4%;
+  color-scheme: dark;
+}
+
+/* ----------------------------------------------------------------- base */
+@layer base {
+  * {
+    border-color: var(--line);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--surface);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv02", "cv03", "cv04", "ss01";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-brand-500) 32%, transparent);
+    color: var(--ink);
+  }
+
+  h1,
+  h2,
+  h3 {
+    letter-spacing: -0.028em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Focus ring — visible on both themes */
+  :focus-visible {
+    outline: 2px solid var(--color-brand-500);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  input,
+  select,
+  textarea,
+  button {
+    font: inherit;
+    color: inherit;
+  }
+
+  /* Scrollbars */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--line) transparent;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: color-mix(in oklab, var(--line) 80%, var(--ink-faint));
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--ink-faint);
+    background-clip: content-box;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* ------------------------------------------------------------ utilities */
+@utility container-page {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  max-width: 84rem;
+  @media (width >= 48rem) {
+    padding-inline: 2rem;
+  }
+  @media (width >= 80rem) {
+    padding-inline: 2.5rem;
+  }
+}
+
+/* Frosted glass panel */
+@utility glass {
+  background: color-mix(in oklab, rgb(var(--glass) / 0.72) 100%, transparent);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid color-mix(in oklab, var(--line) 85%, transparent);
+}
+
+/* Hairline engineering grid backdrop */
+@utility grid-bg {
+  background-image: linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 56px 56px;
+  background-position: center center;
+}
+
+@utility dot-bg {
+  background-image: radial-gradient(var(--grid-line) 1.1px, transparent 1.1px);
+  background-size: 22px 22px;
+}
+
+/* Text gradient for hero copy */
+@utility text-aurora {
+  background-image: linear-gradient(
+    100deg,
+    var(--color-brand-300) 0%,
+    var(--color-violet-accent) 42%,
+    var(--color-cyan-accent) 88%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Animated conic sheen used on featured cards */
+@utility sheen {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -40% -10%;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      color-mix(in oklab, var(--color-brand-400) 22%, transparent) 60deg,
+      transparent 120deg,
+      transparent 360deg
+    );
+    animation: spin-sheen 7s linear infinite;
+    z-index: -1;
+    pointer-events: none;
+  }
+}
+
+@keyframes spin-sheen {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@utility ring-soft {
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--line) 70%, transparent),
+    0 18px 44px -22px hsl(var(--shadow-color) / 0.5);
+}
+
+@utility text-balance-tight {
+  text-wrap: balance;
+  letter-spacing: -0.02em;
+}
+
+/* Shimmer skeleton */
+@utility skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--surface-2) 0%,
+    var(--surface-3) 42%,
+    var(--surface-2) 84%
+  );
+  background-size: 200% 100%;
+  animation: var(--animate-shimmer);
+}
+
+/* --------------------------------------------------------------- print */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  .print-block {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  a[href]::after {
+    content: "";
+  }
+
+  /* The report re-declares the semantic tokens on `.print-doc` so every
+     surface, border and ink shade resolves to a paper-safe value. */
+  .print-doc {
+    --surface: #ffffff;
+    --surface-2: #ffffff;
+    --surface-3: #f3f4f8;
+    --line: #ccd2e0;
+    --ink: #0b1020;
+    --ink-soft: #39415a;
+    --ink-faint: #626b83;
+    --glass: 255 255 255;
+    color-scheme: light;
+  }
+  .print-doc .glass {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+  }
+  /* Scroll-reveal animations never fire for off-screen blocks, which would
+     otherwise print as blank space. */
+  .print-doc *,
+  .print-doc *::before,
+  .print-doc *::after {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@page {
+  margin: 14mm;
+}

@@ -1,0 +1,74 @@
+
+> dept-selection-guide@1.0.0 dev
+> next dev
+
+   ▲ Next.js 15.5.27
+   - Local:        http://localhost:3000
+   - Network:      http://172.16.32.82:3000
+
+ ✓ Starting...
+ ✓ Ready in 44.3s
+ ○ Compiling / ...
+ ✓ Compiled / in 18.7s (741 modules)
+ ○ Compiling /advisor ...
+ ✓ Compiled /advisor in 29.4s (1655 modules)
+ GET /advisor 200 in 45233ms
+ GET /advisor 200 in 1913ms
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /favicon.ico in 6s (911 modules)
+ GET /favicon.ico 200 in 8865ms
+ ○ Compiling /api/market ...
+ ✓ Compiled /api/market in 67.2s (1662 modules)
+ GET /api/market 200 in 73115ms
+ GET /api/market?ids=computer-science,electrical-engineering,physical-science,chemistry,biotechnology,data-science 200 in 58030ms
+ GET /api/market?ids=computer-science,electrical-engineering,physical-science,chemistry,biotechnology,data-science 200 in 80863ms
+ GET /advisor 200 in 24304ms
+ ✓ Compiled in 6.4s (740 modules)
+ GET /advisor 200 in 879ms
+ ✓ Compiled in 8.2s (1634 modules)
+ GET /advisor 200 in 2295ms
+ ✓ Compiled in 5.1s (1634 modules)
+ GET /advisor 200 in 4958ms
+ ✓ Compiled in 1856ms (1634 modules)
+ GET /advisor 200 in 817ms
+ ✓ Compiled in 5.9s (1634 modules)
+ GET /advisor 200 in 4715ms
+ ✓ Compiled in 3.1s (1634 modules)
+ GET /advisor 200 in 2266ms
+ ✓ Compiled in 4.5s (1634 modules)
+ GET /advisor 200 in 2175ms
+ ✓ Compiled in 2.8s (1634 modules)
+ GET /advisor 200 in 1400ms
+ ✓ Compiled in 2.9s (1634 modules)
+ GET /advisor 200 in 1482ms
+ ✓ Compiled in 3.5s (1634 modules)
+ GET /advisor 200 in 1032ms
+ ✓ Compiled in 3s (1634 modules)
+ GET /advisor 200 in 759ms
+ ✓ Compiled in 964ms (740 modules)
+ GET /advisor 200 in 1186ms
+ ✓ Compiled in 1766ms (740 modules)
+ GET /advisor 200 in 1730ms
+ ✓ Compiled in 4.5s (1634 modules)
+ GET /advisor 200 in 760ms
+ ✓ Compiled in 2.6s (740 modules)
+ GET /advisor 200 in 304ms
+ GET /advisor 200 in 2432ms
+ GET /advisor 200 in 958ms
+ ○ Compiling /api/market ...
+ ✓ Compiled /api/market in 3.9s (922 modules)
+ GET /api/market?ids=computer-science,electrical-engineering,physical-science,chemistry,biotechnology,data-science 200 in 4860ms
+ GET /api/market?ids=computer-science,electrical-engineering,physical-science,chemistry,biotechnology,data-science 200 in 72ms
+ GET /api/market?ids=computer-science,electrical-engineering,physical-science,chemistry,biotechnology,data-science 200 in 56ms
+ GET /api/market?ids=computer-science,electrical-engineering,physical-science,chemistry,biotechnology,data-science 200 in 108ms
+ GET /api/market 200 in 75ms
+ ✓ Compiled in 9.7s (1634 modules)
+ GET /advisor 200 in 4450ms
+ GET /advisor 200 in 2780ms
+ ○ Compiling /api/market ...
+ ✓ Compiled /api/market in 1609ms (922 modules)
+ GET /api/market 200 in 2388ms
+ GET /api/market 200 in 243ms
+ GET /api/market?ids=electrical-engineering,computer-science,mathematics,data-science,mechanical-engineering,physical-science 200 in 3170ms
+ GET /api/market?ids=electrical-engineering,computer-science,mathematics,data-science,mechanical-engineering,physical-science 200 in 1621ms
+ GET /api/market 200 in 1433ms
